@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-4">
+    <h3 class="mb-3">클래스 생성</h3>
+
+    {% for m in get_flashed_messages(with_categories=false) %}
+    <div class="alert alert-info">{{ m }}</div>
+    {% endfor %}
+
+    <form method="post" enctype="multipart/form-data">
+        {{ form.hidden_tag() }} {# CSRF 토큰 추가 #}
+
+        <div class="mb-3">
+            <label class="form-label">클래스 ID</label>
+            {{ form.classid(class="form-control", placeholder="예: [홍대/연남]초보자도 고퀄리티 그림을 완성하는 아크릴 원데이클래스") }}
+            {% for e in form.classid.errors %}
+            <div class="text-danger small">{{ e }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">설명</label>
+            {{ form.description(class="form-control", rows="4", placeholder="클래스 설명을 입력하세요.") }}
+            {% for e in form.description.errors %}
+            <div class="text-danger small">{{ e }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">가격(원)</label>
+            {{ form.price(class="form-control", min="0", step="1000", value="0") }}
+            {% for e in form.price.errors %}
+            <div class="text-danger small">{{ e }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">소요시간</label>
+            <div class="input-group">
+                {{ form.duration_minutes(class="form-control", min="5", step="5", value="60", placeholder="분 단위로 입력 (예: 90)") }}
+                <span class="input-group-text">분</span>
+            </div>
+            {% for e in form.duration_minutes.errors %}
+            <div class="text-danger small">{{ e }}</div>
+            {% endfor %}
+        </div>
+        <!-- 대표 이미지(필수) -->
+        <div class="mb-3">
+            <label class="form-label">대표 이미지</label>
+            {{ form.image(class="form-control", accept="image/*") }}
+            {% for e in form.image.errors %}
+            <div class="text-danger small">{{ e }}</div>
+            {% endfor %}
+        </div>
+
+        <!-- 추가 이미지(선택, 여러 장) -->
+        {% if form.images is defined %}
+        <div class="mb-3">
+            <label class="form-label">추가 이미지 (최대 4장)</label>
+            {{ form.images(class="form-control", accept="image/*", multiple=True) }}
+            {% for e in form.images.errors %}
+            <div class="text-danger small">{{ e }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">등록하기</button>
+            <a href="{{ url_for('course.workspace') }}" class="btn btn-outline-secondary">돌아가기</a>
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}

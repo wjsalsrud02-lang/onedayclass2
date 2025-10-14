@@ -1,0 +1,237 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="class-detail">
+  <!-- 왼쪽: 이미지 + 제목 + 정보 -->
+  <div class="class-left">
+    <img class="main-image"
+         src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80">
+    <h1 class="class-title">[아바바 커피농장 체험/교육] 커피 드립백 클래스</h1>
+  </div>
+
+  <!-- 오른쪽: 예약 박스 -->
+  <aside class="class-right">
+    <div class="schedule-card">
+      <h6 class="small-title">클래스 일정</h6>
+      <input type="date" class="date-input" value="2025-10-02">
+
+      <div class="tag success">✅ 당일 예약 가능 클래스 입니다</div>
+
+      <div class="note">
+        예약 전 일정 조율이 필요한 클래스예요.<br>
+        문의하기를 통해 강사님께 채팅 또는
+        원하는 날짜로 개설 요청을 드려보세요!
+      </div>
+
+      <div class="price">35,000 원 / 1인</div>
+
+             <!-- 클래스 신청하기 버튼 -->
+        <button class="btn-apply"
+        onclick="location.href='{{ url_for('reservations.reservation_form') }}?class_name={{ class_title|urlencode }}'">
+  클래스 신청하기
+        </button>
+
+      <div class="small-actions">
+        <button class="btn-ghost">위시리스트</button>
+        <button class="btn-ghost">문의하기</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<section class="class-tab-section">
+  <ul class="tab_menu">
+    <li class="active">클래스 소개</li>
+    <li>커리큘럼</li>
+    <li>호스트 소개</li>
+    <li>위치</li>
+    <li>후기</li>
+    <li>문의</li>
+  </ul>
+
+ <div class="tabcontent active">
+  <h1>클래스 소개</h1>
+  <p>
+    해당 클래스는 사전에 조율이 완료된 단체클래스 결제 페이지입니다. <br>
+    관련자 외 결제 시, 환불이 불가하오니 주의 부탁드립니다.
+  </p>
+
+  <div class="class-info">
+
+<p>
+나만의 감성을 담아 직접 만들어보는 특별한 커피 💕
+<br><br>
+세상 어디에도 없는, 오직 내 손으로 완성한 커피 드립백
+</p><br><br>
+      <div class="class-info">
+커피의 종류와 특징을 배우고, 자신이 원하는 원두를 골라<br>
+세상에 하나뿐인 나만의 드립백을 만들어볼수있어요.<br>
+정성스럽게 포장한 드립백은 소중한 사람에게 선물하기도 좋고,<br>
+바쁜 일상 속에서도 간편하게 내가 직접 만든 커피를 즐길 수 있어 <br>
+더욱 의미있는 클래스 입니다.
+      </div>
+      <br><br><br>
+      <div class="class-info">
+<h4>🎨 직접 디자인할 수 있는 포장지 & 박스 </h4>
+<br><br>
+📌 포장지 위에 그림을 그려 나만의 감성을 담고,
+<br><br>
+📌 예쁜 스티커를 붙여 개성을 더하고,
+<br><br>
+📌 박스까지 꾸며서 선물처럼 완성!
+<br><br><br>
+나만의 손길이 닿은 세상에 단 하나뿐인 커피 드립백을 만들 수 있었어요.
+<br><br>
+직접 마셔도 좋고, 특별한 사람에게 선물하기에도 좋아요.
+<br><br><br>
+커피농장 탐방 / 바리스타 체험 / 원데이 클래스 등
+<br><br>
+다양한 맞춤형 커피 교육 프로그램을 제공하고 있어요!
+<br><br>
+체험 프로그램 (개인 / 단체 신청 가능)
+<br><br>
+개인, 친구, 가족, 연인과 함께 특별한 체험을 즐겨보세요!
+<br><br><br>
+✅ 기업 연수 / 워크숍 – 커피를 통해 팀워크 UP!
+<br><br>
+✅ 학교 & 교육기관 – 실습 중심의 커피 교육!
+<br><br>
+✅ 소모임 & 동아리 – 맞춤형 클래스 가능!
+<br><br><br>
+📢 기업 연수, 학교 체험학습, 동아리 활동, 가족 모임까지
+<br><br>
+맞춤형 단체 체험일정 및 커리큘럼 조정 가능하니, 언제든 문의 주세요!
+      </div>
+  </div>
+      <h1>이런 분들이 들으면 좋아요</h1>    <br><br><br>
+•  색다른 커피 체험을 즐기고 싶은 분
+<br><br>
+•  핸드메이드 감성을 사랑하는 분
+<br><br>
+•  예쁜 패키지에 감성을 담아 선물하고 싶은 분
+</div>
+
+<div class="tabcontent">
+<h1>커리큘럼</h1><br><br><br>
+1. 우리, 커피랑 친해져요<br>
+커피는 어디서 왔을까?<br>
+생두, 로스팅, 드립백까지 커피의 여정<br>
+<br><br><br>
+2. 내 입맛을 찾아서!<br>
+다양한 원두 시향 & 테이스팅<br>
+산미? 바디감? 향?<br>
+나만의 커피 취향 알아보기<br>
+<br><br><br>
+3. 드립백, 어떻게 만들까요?<br>
+드립백 구성품 소개<br>
+포장지, 필터, 실링까지 하나하나 직접 체험<br>
+실습: 내 손으로 만드는 나만의 드립백!<br>
+<br><br><br>
+4. 감성 한 스푼, 포장 한 스푼<br>
+드립백에 스토리를 담아보자<br>
+손글씨 태그 만들기<br>
+선물용 포장 꿀팁!<br>
+<br><br><br>
+5. 우리만의 커피타임<br>
+내가 만든 드립백으로 함께 커피 내려보기<br>
+수업 마무리 & 함께 기념사진 찰칵📸<br>
+<br><br><br>
+🧡 클래스 특전<br>
+나만의 드립백 (직접 만든 제품/1박스)<br>
+아바바 드립백 카드<br>
+</div>
+
+  <div class="tabcontent">
+  <h1>호스트 소개</h1>
+  <div class="class-info">
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <div style="width: 400px; display: flex; align-items: center; gap: 40px;">
+        <img src="https://firebasestorage.googleapis.com/v0/b/mochaclass-intro-web-4e0c0.appspot.com/o/FCMImages%2FS1qHTK1cKDYcZxkK_67f37c193312221e043a3ad6_400x400?alt=media"
+             style="width: 100px; height: 100px; border-radius: 50%;">
+        <div>
+          <h5 style="margin:0;"><a href="#">채널 바로가기</a></h5>
+          <p style="margin:0;">모카클래스 매니저</p>
+        </div>
+
+      </div>
+    </div>
+    </div>
+<p>
+아바바 커피 @avava_coffee<br>
+(생두, 원두, 커피용품, 카페)<br><br>
+
+아바바 커피농장 @avava_coffeefarm<br>
+(커피농장, 체험, 교육, 연수, 출강)<br><br>
+
+커피의전설 바리스타학원 @legend_of_coffee<br>
+(바리스타 교육)
+</p>
+</div>
+
+  <div class="tabcontent">
+   <h1>위치</h1>
+      <p>- 대한민국 충청남도 논산시 연산면 선비로604번길 27 아바바 커피 농장<br>
+      <br><br><br>
+
+      <h1>공간 소개</h1><br>
+      <div style="display: flex; gap: 10px;">
+      <img src="https://firebasestorage.googleapis.com/v0/b/mochaclass-intro-web-4e0c0.appspot.com/o/FCMImages%2Fy4X86ZHH1IwDmvBA_67f37c193312221e043a3ad6_1024x1024?alt=media"
+      style="width: 480px; height:360px;">
+          <img src="https://firebasestorage.googleapis.com/v0/b/mochaclass-intro-web-4e0c0.appspot.com/o/FCMImages%2FZtXHtf8aDmw6sPdv_67f37c193312221e043a3ad6_1024x1024?alt=media"
+          style="width: 480px; height:360px;">
+      </div>
+<br><br><br>
+<h1>공간 운영시간 안내</h1>
+• 평일 오전 09:00 ~ 오후 18:00<br><br>
+
+• 토요일 오전 09:00 ~ 오후 18:00<br><br>
+
+• 일요일 오전 09:00 ~ 오후 18:00  <br><br><br>
+<h1>제공 사항</h1>
+
+• 와이파이를 제공해요
+<br><br>
+• 주차 공간이 있어요
+<br><br>
+• 앞치마 및 장갑을 제공해요
+<br><br>
+• 포장 용기를 제공해요
+<br><br><br>
+<h1>유의 사항</h1>
+
+• 손세정제가 비치 되어있어요
+<br><br>
+• 실내 소독을 해요
+  </div>
+  <div class="tabcontent">
+    <h1>후기</h1>
+      <div class="class-info">
+          아직 등록된 후기가 없습니다.
+      </div>
+  </div>
+  <div class="tabcontent">
+    <h1>문의</h1>
+      <div class="class-info">
+          궁금한 사항이나 클래스 일정에 대해 문의해 주세요!<br><br>
+          <a href="/qna">▶️Q&A 질문하러 가기</a>
+      </div>
+  </div>
+
+<script>
+const tabMenu = document.querySelectorAll('.tab_menu li');
+const tabContent = document.querySelectorAll('.tabcontent');
+
+tabMenu.forEach((tm, i) => {
+  tm.addEventListener('click', () => {
+    // 모든 탭 비활성화
+    tabMenu.forEach(item => item.classList.remove('active'));
+    tabContent.forEach(tc => tc.classList.remove('active'));
+
+    // 클릭한 탭 활성화
+    tm.classList.add('active');
+    tabContent[i].classList.add('active');
+  });
+});
+
+</script>
+
+{% endblock %}

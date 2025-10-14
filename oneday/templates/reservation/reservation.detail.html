@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}예약 상세{% endblock %}
+
+{% block content %}
+<h2 class="mb-3">예약 상세</h2>
+
+<ul class="list-group mb-3">
+  <li class="list-group-item"><strong>클래스명:</strong> {{ reservation.class_name }}</li>
+  <li class="list-group-item"><strong>날짜:</strong> {{ reservation.reserved_date.strftime('%Y-%m-%d') }}</li>
+  <li class="list-group-item"><strong>시간:</strong> {{ reservation.reserved_time }}</li>
+  <li class="list-group-item"><strong>상태:</strong> {{ reservation.status }}</li>
+</ul>
+
+<a href="{{ url_for('reservations.reservation_form', res_id=reservation.id) }}" class="btn btn-warning">수정</a>
+<a href="{{ url_for('reservations.reservation_list') }}" class="btn btn-outline-warning">목록</a>
+{% endblock %}

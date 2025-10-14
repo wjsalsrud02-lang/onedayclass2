@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}예약 내역{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">예약 내역</h2>
+    <a href="{{ url_for('reservations.reservation_form') }}" class="btn btn-orange">+ 새 예약</a>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-striped mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>클래스명</th>
+              <th>날짜</th>
+              <th>시간</th>
+              <th>상태</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+  {% for r in reservations %}
+  <tr>
+    <td class="align-middle">{{ r.class_name }}</td>
+    <td class="align-middle">{{ r.reserved_date.strftime('%Y-%m-%d') }}</td>
+    <td class="align-middle">{{ r.reserved_time }}</td>
+    <td class="align-middle">{{ r.status }}</td>
+    <td class="align-middle">
+      <form action="{{ url_for('reservations.delete_reservation', res_id=r.id) }}" method="post" style="display:inline;"
+            onsubmit="return confirm('정말 예약을 취소하시겠습니까?');">
+        <button type="submit" class="btn btn-sm btn-danger">예약 취소</button>
+      </form>
+    </td>
+  </tr>
+  {% else %}
+  <tr>
+    <td colspan="5" class="text-center text-muted py-3">예약이 없습니다.</td>
+  </tr>
+  {% endfor %}
+</tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

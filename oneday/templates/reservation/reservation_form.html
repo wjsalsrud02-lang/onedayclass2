@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}예약 입력{% endblock %}
+
+{% block content %}
+<div id="reservation">
+<h2 class="mb-3">{{ '예약 수정' if reservation else '새 예약' }}</h2>
+
+<form method="post">
+  <div class="mb-3">
+    <label for="class_name" class="form-label">클래스명</label>
+    <input type="text" class="form-control" id="class_name" name="class_name"
+           value="{{ reservation.class_name if reservation else '' }}" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="reserved_date" class="form-label">날짜</label>
+    <input type="date" class="form-control" id="reserved_date" name="reserved_date"
+           value="{{ reservation.reserved_date.strftime('%Y-%m-%d') if reservation else '' }}" required>
+  </div>
+
+<div class="mb-3">
+  <label for="reserved_time" class="form-label">시간</label>
+  <select class="form-select" id="reserved_time" name="reserved_time" required>
+    {% for hour in range(9, 22) %}
+      <option value="{{ "%02d:00" % hour }}"
+        {% if reservation and reservation.reserved_time == "%02d:00" % hour %}selected{% endif %}>
+        {{ "%02d:00" % hour }}
+      </option>
+      <option value="{{ "%02d:30" % hour }}"
+        {% if reservation and reservation.reserved_time == "%02d:30" % hour %}selected{% endif %}>
+        {{ "%02d:30" % hour }}
+      </option>
+    {% endfor %}
+  </select>
+</div>
+
+
+    <button type="submit" class="btn btn-orange">저장</button>
+  <a href="{{ url_for('reservations.reservation_list') }}" class="btn btn-secondary">취소</a>
+</form>
+
+
+    {% if reservation %}
+  <form method="post"
+        action="{{ url_for('reservations.delete_reservation', res_id=reservation.id) }}"
+        style="display:inline;">
+    <button type="submit" class="btn btn-danger"
+            onclick="return confirm('정말 삭제하시겠습니까?');">
+      삭제
+    </button>
+  </form>
+</div>
+{% endif %}
+{% endblock %}

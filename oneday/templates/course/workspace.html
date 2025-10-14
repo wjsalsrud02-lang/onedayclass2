@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    :root { --header-h: 60px; } /* 상단 헤더 높이에 맞게 조절 */
+    .ws { display:flex; }
+    .ws-side {
+      width: 240px;
+      border-right: 1px solid #e9ecef;
+      padding: 16px 12px;
+      top: var(--header-h);
+      height: calc(100vh - var(--header-h));
+      background: #fff;
+    }
+    .ws-main { flex: 1; padding: 24px;  margin-top: 24px; margin-left: 264px; }
+
+    .list-group-item.active {
+      background:#eef3ff; border-color:#c9d8ff; color:#1d2b5b; font-weight:600;
+    }
+
+</style>
+
+<div class="container-fluid px-0">
+    <div class="ws">
+        <!-- 왼쪽 사이드바 -->
+        <aside class="ws-side">
+            <div class="fw-semibold mb-3">클래스 워크스페이스</div>
+            <div class="list-group small">
+                <a href="{{ url_for('course.workspace', tab='create') }}"
+                   class="list-group-item list-group-item-action {% if active_tab=='create' %}active{% endif %}">
+                    ✚ 클래스 생성
+                </a>
+                <a href="{{ url_for('course.workspace', tab='completed') }}"
+                   class="list-group-item list-group-item-action {% if active_tab=='completed' %}active{% endif %}">
+                    ☑ 등록 완료 클래스
+                </a>
+            </div>
+        </aside>
+
+        <!-- 오른쪽: 메인 -->
+        <main class="ws-main">
+            {% if active_tab == 'completed' %}
+            <h3 class="mb-4">등록 완료 클래스</h3>
+            <div class="row g-3">
+                {% for c in courses %}
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        {% set sorted_imgs = c.images | sort(attribute='created_at') %}
+                        {% set main = sorted_imgs|last if sorted_imgs else None %}
+
+                        {% if main %}
+                        <img src="{{ url_for('course.uploaded_file', filename=main.path|replace('\\','/') ) }}"
+                             class="card-img-top"
+                             style="object-fit:cover;height:180px"
+                             alt="{{ c.classid }}"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="bg-light d-none align-items-center justify-content-center" style="height:180px;">
+                            이미지 없음
+                        </div>
+
+                        {% else %}
+                        <div class="bg-light d-flex align-items-center justify-content-center" style="height:180px;">
+                            이미지 없음
+                        </div>
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ c.classid }}</h5>
+                            <p class="card-text text-muted">{{ c.description }}</p>
+                            <div class="d-flex justify-content-between">
+                                <span class="fw-bold">{{ "{:,}".format(c.price) }}원</span>
+                                <a href="{{ url_for('course.manage', course_id=c.id) }}" class="btn btn-link p-0 ms-2">관리</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            {% else %}
+            <h3 class="mb-4">클래스 생성</h3>
+            {% for m in get_flashed_messages(with_categories=false) %}
+            <div class="alert alert-success">{{ m }}</div>
+            {% endfor %}
+            <div class="row g-3">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="{{ url_for('course.create') }}" class="text-decoration-none">
+                        <div class="border rounded-3 p-5 d-flex align-items-center justify-content-center"
+                             style="min-height:220px;">
+                            <div class="text-center text-muted">
+                                <div style="font-size:48px; line-height:1;">＋</div>
+                                <div class="mt-2 fw-semibold">클래스 생성하기</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endif %}
+        </main>
+    </div>
+</div>
+
+{% endblock %}
+
+

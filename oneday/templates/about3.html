@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="class-detail">
+  <!-- 왼쪽: 이미지 + 제목 + 정보 -->
+  <div class="class-left">
+    <img class="main-image"
+         src="https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?auto=format&fit=crop&w=900&q=80">
+    <h1 class="class-title">1:1 포토 피티 - 1:1 Photo PT (예약 가능)</h1>
+  </div>
+
+  <!-- 오른쪽: 예약 박스 -->
+  <aside class="class-right">
+    <div class="schedule-card">
+      <h6 class="small-title">클래스 일정</h6>
+      <input type="date" class="date-input" value="2025-10-02">
+
+      <div class="tag success">✅ 당일 예약 가능 클래스 입니다</div>
+
+      <div class="note">
+        예약 전 일정 조율이 필요한 클래스예요.<br>
+        문의하기를 통해 강사님께 채팅 또는
+        원하는 날짜로 개설 요청을 드려보세요!
+      </div>
+
+      <div class="price">135,000 원 / 1인</div>
+
+             <!-- 클래스 신청하기 버튼 -->
+        <button class="btn-apply"
+        onclick="location.href='{{ url_for('reservations.reservation_form') }}?class_name={{ class_title|urlencode }}'">
+  클래스 신청하기
+        </button>
+
+      <div class="small-actions">
+        <button class="btn-ghost">위시리스트</button>
+        <button class="btn-ghost">문의하기</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<section class="class-tab-section">
+  <ul class="tab_menu">
+    <li class="active">클래스 소개</li>
+    <li>커리큘럼</li>
+    <li>호스트 소개</li>
+    <li>위치</li>
+    <li>후기</li>
+    <li>문의</li>
+  </ul>
+
+ <div class="tabcontent active">
+  <h1>클래스 소개</h1>
+  <p>
+    해당 클래스는 사전에 조율이 완료된 단체클래스 결제 페이지입니다. <br>
+    관련자 외 결제 시, 환불이 불가하오니 주의 부탁드립니다.
+  </p>
+<br><br><br>
+<h2>1:1 포토 피티(1:1 Photo PT)
+<br>
+당신의 시선은 보다 가치있게 추억되어야 합니다.</h2>
+<br><br>
+<p>Photo PT는 원하시는 방식으로 수업을 진행합니다.<br><br>
+
+기존 수업 방식이 없는 것이 아니라 15년간 쌓아온 사진강의 노하우는 교육이라는 거부감 없이 스며드는 걸 느끼실 거예요.<br><br>
+
+최대한 많은 질문을 가져오시면 유익하고 능동적인 수업이 될 것이고, 조용하고 차분한 분이라면 제가 더 많은 내용을 이야기할 수 있겠지요.<br><br>
+
+뭘 물어봐야 할지도 모르는 카린이님에게는 기초부터 알기 쉽게 차근차근 정리해드리니 걱정하지 마시구요~</p>
+  </div>
+</div>
+
+<div class="tabcontent">
+    <h1>커리큘럼</h1>
+    20분 - 소개 및 니즈 파악, 커리큘럼 구성<br>
+40분 - 이론<br>
+60분 - 실습<br>
+60분 - 활용<br>
+    <br><br><br>
+
+        <h1>초급</h1>
+    <p>
+      ✔ 스마트폰 카메라 잘 찍는 법<br>
+
+✔ 나에게 맞는 카메라 구입하기<br>
+
+✔ 여행사진 촬영하기<br>
+
+✔ 인물사진 촬영하기<br>
+    </p>
+    <br><br><br>
+
+        <h1>중급</h1>
+    <p>
+✔ 카메라 조작(셔터와 조리개의 활용)<br>
+✔ 사진 구도<br>
+✔ 균형<br>
+✔ 구성의 요소<br>
+✔ 사진을 보는 방법<br>
+
+    </p>
+
+     <br><br><br>
+
+        <h1>고급</h1>
+    <p>
+✔ 기록으로써의 사진<br>
+✔ 저널리즘(Journalism)<br>
+✔ 스트레이트 포토(straight photography)<br>
+✔ 나만의 사진<br>
+ </p>
+    <br><br><br>
+    <p>*상기 커리큘럼은 개인별 변동될 수 있습니다.</p>
+    <br><br><br>
+
+    <h1>목표</h1>
+    ✔ 100% 1대1 퍼스널 트레이닝 사진 강의는 대원님의 사진 만족이 제일 우선입니다.<br>
+✔ 대원님의 사진을 바라보는, 타인의 부러워하는 시선은 덤입니다 : )<br>
+<br><br><br>
+<h1>📸 차별점</h1>
+
+✔ 세계 유명 사진가들의 사진과 비교하여 내 사진의 특징(유형)을 분석합니다.<br>
+✔ 정말 쉽게 설명해드립니다.<br>
+✔ 사진에 관한 어떠한 것도 질문 가능합니다.
+<br><br><br>
+
+    <h1>📸 클래스 안내</h1>
+1:1 수업으로 진행됩니다.<br>
+여러 분들이 함께 배우시길 원하신다면 문의 남겨주세요.
+    <br><br><br>
+    <h1>이런 분들이 들으면 좋아요</h1>
+•  ✔ DSLR 사진을 시작하시는 분<br>
+•  혹은 어떤 카메라를 구매할지 결정 못하신 분<br>
+•  ✔ 핸드폰 사진으로 SNS에 자랑하고 싶으신 분<br>
+•  ✔ 하시는 일에 사진이 필요한 분<br>
+•  ✔ 멋진 여행 사진을 남기고 싶은 분<br>
+•  ✔ 사진은 잘 찍고 싶지만 어렵다고 느껴지시는 분<br>
+•  ✔ 다른 사람을 멋있게 찍어주시고 싶은 분<br>
+•  ✔ 사진으로 칭찬받고 싶은분<br>
+•  ✔ 필름 카메라를 접해보고 싶으신 분<br>
+•  ✔ 암실 구성을 하고 싶으신 분<br>
+•  ✔ 홈 스튜디오 구성을 하고 싶은 분
+</div>
+
+  <div class="tabcontent">
+  <h1>호스트 소개</h1>
+  <div class="class-info">
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <div style="width: 400px; display: flex; align-items: center; gap: 40px;">
+        <img src="https://firebasestorage.googleapis.com/v0/b/mochaclass-intro-web-4e0c0.appspot.com/o/FCMImages%2FhvD4marY1VdGpG5c_63f450bb45b1ed0db10d2fe9_400x400?alt=media"
+             style="width: 100px; height: 100px; border-radius: 50%;">
+        <div>
+          <h5 style="margin:0;"><a href="#"> 채널 바로가기</a></h5>
+          <p style="margin:0;">모카클래스 매니저</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <p>사진은 시선의 연장이고 시선은 내가 원하는 곳에 머물지요.<br>
+  내 사진 안에는 나의 내음이 묻어있고 나는 또 그 향기로 타인에게 이야기를 전달해요.
+  <br><br>
+  나를 닮아 나를 닮은, 내 사진을 좋아하는 사진쟁이예요.
+  <br><br>
+  2007년부터 룩앤씽이라는 이름으로 사진 강의를 해왔어요.
+  사진이라는 매개로 여러 사람들과 기쁜 만남을 가지게 된 것에 정말 큰 감사를 느끼고 있어요.<br>
+  저의 기쁨을 당신과 함께하고 싶습니다.</p>
+</div>
+
+  <div class="tabcontent">
+   <h1>위치</h1>
+      <p>- 대대한민국 서울특별시 서대문구 홍제동 137-2 201호<br>
+(3호선 홍제역 2번 출구 - 직진 - 초록마을에서 좌회전 - 곧 보이는 작은 골목에서 우회전 - 왼편으로 노란색 프로젝트룩 간판이 보입니다.)</p>
+      <br><br><br>
+
+<h1>공간 소개</h1><br>
+      <img src="https://firebasestorage.googleapis.com/v0/b/mochaclass-intro-web-4e0c0.appspot.com/o/FCMImages%2FXGfzt10A7HK4fSR9_63f450bb45b1ed0db10d2fe9_1024x1024?alt=media">
+ <br><br><br>
+      <h1>공간 운영 시간 안내</h1>
+      • 평일 오전 11:00 ~<br>
+
+• 토요일 오전 11:00 ~<br>
+
+• 일요일 오전 11:00 ~
+      <div class="class-info">
+          수요일은 오후 1시 이후 가능합니다.
+      </div> <br><br><br>
+ <h1>제공 사항</h1>
+
+• 와이파이를 제공해요
+<br><br>
+• 주차 공간이 있어요
+<br><br>
+• 간단한 음료 및 다과를 제공해요
+<br><br>
+• 포장 용기를 제공해요
+<br><br>
+• 포토존이 있어요
+<br><br>
+• 앞치마 및 장갑을 제공해요
+<br><br><br>
+<h1>유의 사항</h1>
+
+• 손세정제가 비치 되어있어요
+<br><br>
+• 실내 소독을 해요
+  </div>
+  </div>
+
+
+  <div class="tabcontent">
+    <h1>후기</h1>
+      <div class="class-info">
+          아직 등록된 후기가 없습니다.
+      </div>
+  </div>
+  <div class="tabcontent">
+    <h1>문의</h1>
+      <div class="class-info">
+          궁금한 사항이나 클래스 일정에 대해 문의해 주세요!<br><br>
+          <a href="/qna">▶️Q&A 질문하러 가기</a>
+      </div>
+  </div>
+
+<script>
+const tabMenu = document.querySelectorAll('.tab_menu li');
+const tabContent = document.querySelectorAll('.tabcontent');
+
+tabMenu.forEach((tm, i) => {
+  tm.addEventListener('click', () => {
+    // 모든 탭 비활성화
+    tabMenu.forEach(item => item.classList.remove('active'));
+    tabContent.forEach(tc => tc.classList.remove('active'));
+
+    // 클릭한 탭 활성화
+    tm.classList.add('active');
+    tabContent[i].classList.add('active');
+  });
+});
+</script>
+
+{% endblock %}

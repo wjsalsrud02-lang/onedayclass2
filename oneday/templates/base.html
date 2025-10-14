@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <!-- swipercdn-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+    <title>모카 클래스</title>
+
+    <!-- sticky footer 레이아웃 -->
+    <style>
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+      }
+      main#site-main { flex: 1; }
+    </style>
+
+</head>
+<body>
+
+{% include 'navbar.html' %}
+
+<main id="site-main">
+{% block content %}{% endblock %}
+</main>
+
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-top">
+            <strong>Mocha Class</strong><br>
+            일상의 따뜻한 휴식과 새로운 경험, 모카클래스<br>
+            <strong>Let’s make more chance with Mocha class</strong>
+        </div>
+        <div class="footer-links">
+            <a href="#">App Store</a>
+            <a href="#">Google Play</a>
+            <a href="#">이용약관</a>
+            <a href="#">개인정보처리방침</a>
+            <a href="#">사업자정보확인</a>
+            <a href="#">서비스소개</a>
+        </div>
+        <div class="footer-info">
+            © <strong>주식회사 레디킨즈</strong> | 대표 <strong>정종학</strong><br>
+            사업자등록번호 : <strong>285-81-02364</strong> | 통신판매번호 : <strong>2021-부산금정-0652</strong><br>
+            주소 : 부산광역시 금정구 부산대학로 50번길 68, PNUAVEC 304호<br>
+            서울특별시 종로구 동숭길 127, 5층 킹고 스타트업 스페이스<br>
+            Tel : <strong>070-7576-1572</strong> (평일 10:00 ~ 20:00)<br>
+            E-mail : <strong>hello-admin@mochaclass.com</strong>
+        </div>
+        <div class="footer-center">
+            <strong>고객 센터 ></strong><br>
+            평일 : 10:00 ~ 20:00 (주말, 공휴일 제외)<br>
+            점심 시간 : 12:00 ~ 13:30
+        </div>
+    </div>
+</footer>
+
+<!--bootstrap js cdn-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+{% block script %}{% endblock %}
+</script>
+
+</body>
+</html>

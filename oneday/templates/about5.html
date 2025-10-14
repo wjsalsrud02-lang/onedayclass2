@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="class-detail">
+  <!-- 왼쪽: 이미지 + 제목 + 정보 -->
+  <div class="class-left">
+    <img class="main-image"
+         src="https://images.unsplash.com/photo-1552196563-55cd4e45efb3?auto=format&fit=crop&w=900&q=80">
+    <h1 class="class-title">초보도 OK! 플라잉요가 한 번 해볼까?</h1>
+  </div>
+
+  <!-- 오른쪽: 예약 박스 -->
+  <aside class="class-right">
+    <div class="schedule-card">
+      <h6 class="small-title">클래스 일정</h6>
+      <input type="date" class="date-input" value="2025-10-02">
+
+      <div class="tag success">✅ 당일 예약 가능 클래스 입니다</div>
+
+      <div class="note">
+        예약 전 일정 조율이 필요한 클래스예요.<br>
+        문의하기를 통해 강사님께 채팅 또는
+        원하는 날짜로 개설 요청을 드려보세요!
+      </div>
+
+      <div class="price">35,000 원 / 1인</div>
+
+              <!-- 클래스 신청하기 버튼 -->
+        <button class="btn-apply"
+        onclick="location.href='{{ url_for('reservations.reservation_form') }}?class_name={{ class_title|urlencode }}'">
+  클래스 신청하기
+        </button>
+
+      <div class="small-actions">
+        <button class="btn-ghost">위시리스트</button>
+        <button class="btn-ghost">문의하기</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<section class="class-tab-section">
+  <ul class="tab_menu">
+    <li class="active">클래스 소개</li>
+    <li>커리큘럼</li>
+    <li>호스트 소개</li>
+    <li>위치</li>
+    <li>후기</li>
+    <li>문의</li>
+  </ul>
+
+ <div class="tabcontent active">
+  <h1>클래스 소개</h1>
+  <p>
+    해당 클래스는 사전에 조율이 완료된 단체클래스 결제 페이지입니다. <br>
+    관련자 외 결제 시, 환불이 불가하오니 주의 부탁드립니다.
+  </p>
+
+  <div class="class-info">
+
+<p>-안녕하세요~ 아트요가 왕십리점입니다<br>
+플라잉요가는 예능과 드라마에 종종 등장해<br>
+이미 해먹을 보신 분들 많으시죠~<br><br>
+플라잉요가는<br>
+해먹의 도움을 받아 척추에 무리를 줄 수 있는 동작들 혹은<br>
+맨 땅에서 하기 힘든 동작들을 보다 쉽게 경험할 수 있게 해주는 운동입니다.<br><br>
+플라잉요가 전문 <br>
+아트요가 왕십리점에서<br>
+재미있고 신나는 플라잉요가<br>
+원데이클래스로 체험해봐요~♡
+</p>
+  </div>
+</div>
+
+<div class="tabcontent">
+    <h1>커리큘럼</h1>
+  <p>* 왕초보 플라잉요가<br>
+1. 해먹과 친해지기<br>
+2. 해먹을 이용한 스트레칭<br>
+3. 해먹위에서 포즈 만들기<br>
+4. 피크포즈 완성<br>
+5. 해먹위에서 휴식(사바사나)</p>
+</div>
+
+  <div class="tabcontent">
+  <h1>호스트 소개</h1>
+  <div class="class-info">
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <div style="width: 400px; display: flex; align-items: center; gap: 40px;">
+        <img src="https://firebasestorage.googleapis.com/v0/b/mochaclass-intro-web-4e0c0.appspot.com/o/FCMImages%2FatiJYIOwV5xNgLjy_6549cad8a2f06603f6398a50_400x400?alt=media"
+             style="width: 100px; height: 100px; border-radius: 50%;">
+        <div>
+          <h5 style="margin:0;"><a href="#">채널 바로가기</a></h5>
+          <p style="margin:0;">모카클래스 매니저</p>
+        </div>
+
+      </div>
+    </div>
+    </div>
+      <p>
+현)아트요가 왕십리점 원장<br>
+전)탑라인요가 총괄매니저<br>
+전)아메리카요가 자양,천호,방이,성수 총괄매니저
+  </p>
+
+</div>
+
+  <div class="tabcontent">
+   <h1>위치</h1>
+      <p>- 대한민국 서울특별시 황학교.텐즈힐몰 텐즈힐몰 1층 219호 아트요가 센터 왕십리점<br>
+      (텐즈힐몰 상가 2번출구와 3번출구 사이에 건물 안쪽에 위치해 있습니다.)</p>
+      <br><br><br>
+
+      <h1>공간 소개</h1><br>
+      <div style="display: flex; gap: 10px;">
+      <img src="https://firebasestorage.googleapis.com/v0/b/mochaclass-intro-web-4e0c0.appspot.com/o/FCMImages%2FdpzVZcplhnl2dmBc_6549cad8a2f06603f6398a50_1024x1024?alt=media"
+      style="width: 480px; height:360px;">
+          <img src="https://firebasestorage.googleapis.com/v0/b/mochaclass-intro-web-4e0c0.appspot.com/o/FCMImages%2FxPHi9hop2BKSX0iL_6549cad8a2f06603f6398a50_1024x1024?alt=media"
+          style="width: 480px; height:360px;">
+      </div>
+<br><br><br>
+<h1>제공 사항</h1>
+
+• 와이파이를 제공해요
+<br><br>
+• 주차 공간이 있어요
+<br><br>
+• 포토존이 있어요
+<br><br><br>
+<h1>유의 사항</h1>
+
+• 손세정제가 비치 되어있어요
+<br><br>
+• 실내 소독을 해요
+  </div>
+  <div class="tabcontent">
+    <h1>후기</h1>
+      <div class="class-info">
+          아직 등록된 후기가 없습니다.
+      </div>
+  </div>
+  <div class="tabcontent">
+    <h1>문의</h1>
+      <div class="class-info">
+          궁금한 사항이나 클래스 일정에 대해 문의해 주세요!<br><br>
+          <a href="/qna">▶️Q&A 질문하러 가기</a>
+      </div>
+  </div>
+
+<script>
+const tabMenu = document.querySelectorAll('.tab_menu li');
+const tabContent = document.querySelectorAll('.tabcontent');
+
+tabMenu.forEach((tm, i) => {
+  tm.addEventListener('click', () => {
+    // 모든 탭 비활성화
+    tabMenu.forEach(item => item.classList.remove('active'));
+    tabContent.forEach(tc => tc.classList.remove('active'));
+
+    // 클릭한 탭 활성화
+    tm.classList.add('active');
+    tabContent[i].classList.add('active');
+  });
+});
+
+</script>
+
+{% endblock %}

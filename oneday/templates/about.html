@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="class-detail">
+  <!-- 왼쪽: 이미지 + 제목 + 정보 -->
+  <div class="class-left">
+    <img class="main-image"
+         src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1200&q=80"
+         alt="쿠킹 클래스">
+    <h1 class="class-title">[단체클래스-한국화이자] 쿠킹 클래스_11명 (7월 2일)</h1>
+  </div>
+
+  <!-- 오른쪽: 예약 박스 -->
+  <aside class="class-right">
+    <div class="schedule-card">
+      <h6 class="small-title">클래스 일정</h6>
+      <input type="date" class="date-input" value="2025-10-02">
+
+      <div class="tag success">✅ 당일 예약 가능 클래스 입니다</div>
+
+      <div class="note">
+        예약 전 일정 조율이 필요한 클래스예요.<br>
+        문의하기를 통해 강사님께 채팅 또는
+        원하는 날짜로 개설 요청을 드려보세요!
+      </div>
+
+      <div class="price">40,000 원 / 1인</div>
+
+             <!-- 클래스 신청하기 버튼 -->
+        <button class="btn-apply"
+        onclick="location.href='{{ url_for('reservations.reservation_form') }}?class_name={{ class_title|urlencode }}'">
+  클래스 신청하기
+        </button>
+
+      <div class="small-actions">
+        <button class="btn-ghost">위시리스트</button>
+        <button class="btn-ghost">문의하기</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<section class="class-tab-section">
+  <ul class="tab_menu">
+    <li class="active">클래스 소개</li>
+    <li>커리큘럼</li>
+    <li>호스트 소개</li>
+    <li>위치</li>
+    <li>후기</li>
+    <li>문의</li>
+  </ul>
+
+ <div class="tabcontent active">
+  <h1>클래스 소개</h1>
+  <p>
+    해당 클래스는 사전에 조율이 완료된 단체클래스 결제 페이지입니다. <br>
+    관련자 외 결제 시, 환불이 불가하오니 주의 부탁드립니다.
+  </p>
+
+  <div class="class-info">
+    <p>1. 수업일시: 2025년 7월 2일(수) 10:30 ~ 13:00</p>
+    <p>2. 수업 인원: 24명</p>
+    <p>3. 공방명: 원더쿠킹</p>
+    <p>4. 품목: 2가지 요리 쿠킹 클래스</p>
+  </div>
+
+  <div class="manager-info">
+    <h1>담당 매니저 정종학</h1>
+    <p>📞 010-2553-1705</p>
+  </div>
+</div>
+
+<div class="tabcontent">
+    <h1>커리큘럼</h1>
+  <p>- 전달드린 견적서 및 수업개요서 참조</p>
+</div>
+
+  <div class="tabcontent">
+  <h1>호스트 소개</h1>
+  <div class="class-info">
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <div style="width: 400px; display: flex; align-items: center; gap: 40px;">
+        <img src="https://i.pinimg.com/736x/4d/dc/74/4ddc74c59523858616fe236229a925d1.jpg"
+             style="width: 100px; height: 100px; border-radius: 50%;">
+        <div>
+          <h5 style="margin:0;"><a href="#">채널 바로가기</a></h5>
+          <p style="margin:0;">모카클래스 매니저</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p>- 전달드린 견적서 및 수업 개요서 참조</p>
+</div>
+
+  <div class="tabcontent">
+   <h1>위치</h1>
+      <p>- 대한민국 서울특별시 강서구 마곡중앙6로 93 강서 면력한방병원</p>
+      <br><br><br>
+
+   <h1>공간 운영시간 안내</h1>
+
+• 평일 오전 00:00 ~ 오후 24:00
+<br><br>
+• 토요일 오전 00:00 ~ 오후 24:00
+<br><br>
+• 일요일 오전 00:00 ~ 오후 24:00
+  </div>
+  <div class="tabcontent">
+    <h1>후기</h1>
+      <div class="class-info">
+          아직 등록된 후기가 없습니다.
+      </div>
+  </div>
+  <div class="tabcontent">
+    <h1>문의</h1>
+      <div class="class-info">
+          궁금한 사항이나 클래스 일정에 대해 문의해 주세요!<br><br>
+          <a href="/qna">▶️Q&A 질문하러 가기</a>
+      </div>
+  </div>
+
+<script>
+const tabMenu = document.querySelectorAll('.tab_menu li');
+const tabContent = document.querySelectorAll('.tabcontent');
+
+tabMenu.forEach((tm, i) => {
+  tm.addEventListener('click', () => {
+    // 모든 탭 비활성화
+    tabMenu.forEach(item => item.classList.remove('active'));
+    tabContent.forEach(tc => tc.classList.remove('active'));
+
+    // 클릭한 탭 활성화
+    tm.classList.add('active');
+    tabContent[i].classList.add('active');
+  });
+});
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="class-detail">
+  <!-- 왼쪽: 이미지 + 제목 + 정보 -->
+  <div class="class-left">
+    <img class="main-image"
+         src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=900&q=80">
+    <h1 class="class-title">[스튜디오히보] 시그니쳐 드로잉 클래스</h1>
+  </div>
+
+  <!-- 오른쪽: 예약 박스 -->
+  <aside class="class-right">
+    <div class="schedule-card">
+      <h6 class="small-title">클래스 일정</h6>
+      <input type="date" class="date-input" value="2025-10-02">
+
+      <div class="tag success">✅ 당일 예약 가능 클래스 입니다</div>
+
+      <div class="note">
+        예약 전 일정 조율이 필요한 클래스예요.<br>
+        문의하기를 통해 강사님께 채팅 또는
+        원하는 날짜로 개설 요청을 드려보세요!
+      </div>
+
+      <div class="price">40,500 원 / 1인</div>
+
+                 <!-- 클래스 신청하기 버튼 -->
+        <button class="btn-apply"
+        onclick="location.href='{{ url_for('reservations.reservation_form') }}?class_name={{ class_title|urlencode }}'">
+  클래스 신청하기
+        </button>
+
+      <div class="small-actions">
+        <button class="btn-ghost">위시리스트</button>
+        <button class="btn-ghost">문의하기</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<section class="class-tab-section">
+  <ul class="tab_menu">
+    <li class="active">클래스 소개</li>
+    <li>커리큘럼</li>
+    <li>호스트 소개</li>
+    <li>위치</li>
+    <li>후기</li>
+    <li>문의</li>
+  </ul>
+
+ <div class="tabcontent active">
+  <h1>클래스 소개</h1>
+  <p>
+    해당 클래스는 사전에 조율이 완료된 단체클래스 결제 페이지입니다. <br>
+    관련자 외 결제 시, 환불이 불가하오니 주의 부탁드립니다.
+  </p>
+<br><br><br>
+<p>아크릴물감을 이용 해 캔버스 위에 두시간 동안 원하는 그림을 그려보는 클래스 입니다 .<br><br>
+
+붓을 처음 잡아보는 분들도 가능한 난이도로 충분한 상담을 통해 참고 할 그림을 고를 수도 있고 창작으로 그려볼 수도 있답니다<br><br>
+
+완성까지 단계별로 알려드려요 :)<br><br>
+
+그림그리는 것 자체가 힐링이 되는 시간을 느껴보세요
+
+~</p>
+  </div>
+
+
+<div class="tabcontent">
+    <h1>커리큘럼</h1>
+   <p>- 소요시간 : 1시간 30분</p>
+    <br><br><br>
+    <div>
+        <h1>step.1 상담을 통해 원하는 그림 선택</h1><br>
+    <img src="https://firebasestorage.googleapis.com/v0/b/mochaclass-intro-web-4e0c0.appspot.com/o/FCMImages%2F1758827334230_68c376f369b10fc0778517d3?alt=media&token=ca6cb371-6872-4921-9df0-f880f9196f7e"
+    style="width: 600px; height: 800px;">
+    </div>
+    <br><br>
+    <div>
+        <h1>step.2 간단한 스케치</h1><br>
+     <img src="https://firebasestorage.googleapis.com/v0/b/mochaclass-intro-web-4e0c0.appspot.com/o/FCMImages%2F1758827475589_68c376f369b10fc0778517d3?alt=media&token=7fa70ca9-0a94-4fe0-bd32-80e93d0d5d3c"
+     style="width: 600px; height: 800px;">
+    </div>
+    <br><br>
+    <div>
+        <h1>step.3 채색 및 완성</h1><br>
+        <img src="https://firebasestorage.googleapis.com/v0/b/mochaclass-intro-web-4e0c0.appspot.com/o/FCMImages%2F1758827540171_68c376f369b10fc0778517d3?alt=media&token=a64aec0c-2afe-456d-a98d-f63f12765c85"
+        style="width: 600px; height: 800px;">
+    </div>
+    <br><br>
+    <div>
+        <h1>step.4 사진 촬영 및 포장(자유)</h1><br>
+        <img src="https://firebasestorage.googleapis.com/v0/b/mochaclass-intro-web-4e0c0.appspot.com/o/FCMImages%2F1758827580079_68c376f369b10fc0778517d3?alt=media&token=f6b3bbff-a5c1-4541-9cbd-9859101c16a9"
+        style="width: 600px; height: 800px;">
+    </div>
+</div>
+
+  <div class="tabcontent">
+  <h1>호스트 소개</h1>
+  <div class="class-info">
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <div style="width: 400px; display: flex; align-items: center; gap: 40px;">
+        <img src="https://firebasestorage.googleapis.com/v0/b/mochaclass-intro-web-4e0c0.appspot.com/o/FCMImages%2FGA4JycXXbt2qJeuT_68c376f369b10fc0778517d3_400x400?alt=media"
+             style="width: 100px; height: 100px; border-radius: 50%;">
+        <div>
+          <h5 style="margin:0;"><a href="#">채널 바로가기</a></h5>
+          <p style="margin:0;">모카클래스 매니저</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+ <p>
+한국아트크레프트협회 소속 작가<br>
+한국플랜테리어협회 소속 작가<br>
+단체전시회 다수 참여<br>
+울산국제아트페어 백드롭페인팅 클래스 참여작가<br>
+울산국제아트페어 참여작가<br>
+  </p>
+</div>
+
+  <div class="tabcontent">
+   <h1>위치</h1>
+      <p>- 대한민국 부산광역시 동래구 명륜동 533-218 대이빌딩10층<br>
+(온천천 초입에 위치해 있습니다 동래지하철역 8번출구로 나와 바로 앞 안락동 방향으로 큰길 신호등 건너 맞은편 7층 서지영국회의원 사무실이 있는 건물 10층(1층에 후크전자담배))</p>
+      <br><br><br>
+
+<h1>공간 소개</h1><br>
+      <div style="display: flex; gap: 10px;">
+      <img src="https://firebasestorage.googleapis.com/v0/b/mochaclass-intro-web-4e0c0.appspot.com/o/FCMImages%2FulKt5bQkGkGaC5pv_68c376f369b10fc0778517d3_1024x1024?alt=media"
+      style="width: 480px; height:360px;">
+          <img src="https://firebasestorage.googleapis.com/v0/b/mochaclass-intro-web-4e0c0.appspot.com/o/FCMImages%2FQ2ROU5JJ072H8jQU_68c376f369b10fc0778517d3_1024x1024?alt=media"
+          style="width: 480px; height:360px;">
+      </div>
+ <br><br><br>
+      <h1>공간 운영 시간 안내</h1>
+      • 평일 오전 11:00 ~<br>
+
+• 토요일 오전 11:00 ~<br>
+
+• 일요일 오전 11:00 ~
+ <br><br><br>
+ <h1>제공 사항</h1>
+
+• 와이파이를 제공해요
+<br><br>
+• 주차 공간이 있어요
+<br><br>
+• 간단한 음료 및 다과를 제공해요
+<br><br>
+• 포장 용기를 제공해요
+<br><br>
+• 포토존이 있어요
+<br><br>
+• 앞치마 및 장갑을 제공해요
+<br><br><br>
+<h1>유의 사항</h1>
+
+• 손세정제가 비치 되어있어요
+<br><br>
+• 실내 소독을 해요
+  </div>
+  </div>
+
+
+  <div class="tabcontent">
+    <h1>후기</h1>
+      <div class="class-info">
+          아직 등록된 후기가 없습니다.
+      </div>
+  </div>
+  <div class="tabcontent">
+    <h1>문의</h1>
+      <div class="class-info">
+          궁금한 사항이나 클래스 일정에 대해 문의해 주세요!<br><br>
+          <a href="/qna">▶️Q&A 질문하러 가기</a>
+      </div>
+  </div>
+
+<script>
+const tabMenu = document.querySelectorAll('.tab_menu li');
+const tabContent = document.querySelectorAll('.tabcontent');
+
+tabMenu.forEach((tm, i) => {
+  tm.addEventListener('click', () => {
+    // 모든 탭 비활성화
+    tabMenu.forEach(item => item.classList.remove('active'));
+    tabContent.forEach(tc => tc.classList.remove('active'));
+
+    // 클릭한 탭 활성화
+    tm.classList.add('active');
+    tabContent[i].classList.add('active');
+  });
+});
+</script>
+
+{% endblock %}

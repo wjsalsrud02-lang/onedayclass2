@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container py-4">
+  <h3 class="mb-3">클래스 수정</h3>
+
+  <form action="{{ url_for('course.edit', course_id=course.id) }}" method="post" enctype="multipart/form-data" class="card p-3 shadow-sm">
+    {{ form.csrf_token() if form is defined else (csrf_token() if csrf_token is defined) }}
+
+    <div class="mb-3">
+      <label class="form-label">클래스 ID</label>
+      <input type="text" name="classid" class="form-control" value="{{ course.classid }}">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">설명</label>
+      <textarea name="description" rows="5" class="form-control">{{ course.description or '' }}</textarea>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">가격(원)</label>
+        <input type="text" name="price" class="form-control" value="{{ '{:,}'.format(course.price or 0) }}">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">소요 시간(분)</label>
+        <input type="text" name="duration_minutes" class="form-control" value="{{ course.duration_minutes or '' }}">
+      </div>
+    </div>
+
+    {% if course.images %}
+      <div class="mb-3 mt-3">
+        <label class="form-label d-block">기존 이미지</label>
+        <div class="d-flex flex-wrap gap-3">
+          {% for img in course.images %}
+            <div class="border rounded p-2" style="width:160px">
+              <img src="{{ url_for('course.uploaded_file', filename=img.path) }}" class="img-fluid rounded mb-2" alt="">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="remove_image_id" value="{{ img.id }}" id="rm{{ img.id }}">
+                <label class="form-check-label" for="rm{{ img.id }}">삭제</label>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="mb-3">
+      <label class="form-label">이미지 추가 (여러 장 가능)</label>
+      <input type="file" name="images" multiple accept="image/*" class="form-control">
+    </div>
+
+    <div class="d-flex gap-2">
+      <button type="submit" class="btn btn-primary">수정 저장</button>
+
+      <!-- 삭제는 별도 폼 (HTML 폼 중첩 불가) -->
+      <form action="{{ url_for('course.delete', course_id=course.id) }}" method="post" onsubmit="return confirm('정말 삭제할까요?');">
+        {{ csrf_token() if csrf_token is defined }}
+        <button type="submit" class="btn btn-outline-danger">삭제</button>
+      </form>
+
+      <a href="{{ url_for('course.workspace', tab='completed') }}" class="btn btn-ghost">목록</a>
+    </div>
+  </form>
+</div>
+{% endblock %}
