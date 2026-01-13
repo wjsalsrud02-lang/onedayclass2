@@ -880,26 +880,9 @@ footer { color: #555; font-size: 13px; padding: 30px 20px; }
 .main-image { width: 100%; height: 450px; border-radius: 14px; display: block; object-fit: cover; box-shadow: 0 8px 30px rgba(28,20,16,0.06); }
 .class-right { flex: 0 0 360px; max-width: 360px; }
 .schedule-card { background: var(--card, #fff); border-radius: 14px; padding: 18px; box-shadow: var(--shadow, 0 8px 30px rgba(28,20,16,0.08)); position: sticky; top: 90px; }
-@media (max-width: 940px){ .wrap, .class-detail { display: block; } .class-right { max-width: none; width:100%; margin-top:16px; } .schedule-card { position: static; top: auto; } }
 
-/* 탭 */
-.class-tab-section { width: 100%; background-color: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; margin-top: 24px; }
-.tab_menu { display: flex; justify-content: space-around; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; list-style: none; padding: 0; background: var(--bg); border-radius: var(--radius); box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); }
-.tab_menu li { flex: 1; text-align: center; padding: 12px 0; font-weight: 500; border-radius: var(--radius); color: var(--accent); background-color: var(--card); cursor: pointer; transition: all 0.25s ease; box-shadow: 0 2px 8px rgba(28, 20, 16, 0.05); }
-.tab_menu li:hover { background-color: rgba(255, 184, 107, 0.15); transform: translateY(-1px); }
-.tab_menu li.active { background-color: var(--primary); color: #fff; font-weight: 600; box-shadow: 0 4px 12px rgba(28, 20, 16, 0.15); transform: translateY(-2px); }
-.tabcontent { display: none; flex-direction: column; justify-content: flex-start; align-items: flex-start; position: relative; background-color: #fffaf5; border-radius: 12px; padding: 30px; box-shadow: var(--shadow); }
-.tabcontent.active { display: flex; }
-.tabcontent h1 { font-size: 24px; color: var(--accent); margin-bottom: 16px; border-bottom: 2px solid var(--primary); display: inline-block; padding-bottom: 4px; }
-.tabcontent .class-info { background-color: #fdfaf7; padding: 16px 20px; border-radius: 10px; margin: 20px 0; border: 1px solid #eee; }
-.tabcontent .class-info p { margin: 6px 0; }
-.tabcontent .manager-info { margin-top: 24px; }
-.tabcontent .manager-info h2 { font-size: 18px; margin-bottom: 6px; }
-.tabcontent button { position: static; bottom: 20px; left: 50%; transform: translateX(-50%); width: 120px; height: 40px; border: none; border-radius: 8px; background: linear-gradient(90deg, var(--primary,#ffb86b), #ff9f5a); color: #fff; font-weight: 600; cursor: pointer; align-self: center; }
-.tabcontent button:hover { background-color: #e3a45c; transform: translateX(-50%) translateY(-2px); }
 
 /* 서브 페이지 */
-/* ===== class-detail 레이아웃 (전역 .row/.card 충돌 영향 받지 않음) ===== */
 .class-detail{
   max-width: 1100px;
   margin: 32px auto;
@@ -926,7 +909,7 @@ footer { color: #555; font-size: 13px; padding: 30px 20px; }
 }
 
 /* 제목 / 메타 */
-.class-title{
+.class-name{
   margin: 50px 0 8px;
   font-size: 30px;
   color: #222;
@@ -1028,23 +1011,7 @@ footer { color: #555; font-size: 13px; padding: 30px 20px; }
   cursor:pointer;
 }
 
-/* 반응형: 화면 좁을 때는 스택(세로) */
-@media (max-width: 940px){
-  .class-detail{ display:block; }
-  .class-right{ max-width: none; width:100%; margin-top:16px; }
-  .schedule-card{ position: static; top: auto; }
-}
 
-.class-tab-section {
-  width: 100%;
-  background-color: var(--card);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 24px;
-  margin-top: 24px;
-}
-
-/* 탭 메뉴 영역 */
 .tab_menu {
   display: flex;
   justify-content: space-around;
@@ -1058,7 +1025,6 @@ footer { color: #555; font-size: 13px; padding: 30px 20px; }
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
 }
 
-/* 개별 탭 버튼 */
 .tab_menu li {
   flex: 1;
   text-align: center;
@@ -1077,7 +1043,6 @@ footer { color: #555; font-size: 13px; padding: 30px 20px; }
   transform: translateY(-1px);
 }
 
-/* 선택된 탭 */
 .tab_menu li.active {
   background-color: var(--primary);
   color: #fff;
@@ -1086,26 +1051,22 @@ footer { color: #555; font-size: 13px; padding: 30px 20px; }
   transform: translateY(-2px);
 }
 
-/* 탭 내용 */
 .tabcontent {
-  display: none; /* 처음엔 안보이게 */
+  display: none;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  position: relative; /* 버튼 위치를 위해 */
+  position: relative;
   background-color: #fffaf5;
   border-radius: 12px;
   padding: 30px;
   box-shadow: var(--shadow);
 }
 
-
 .tabcontent.active {
   display: flex;
 }
 
-
-/* 제목 */
 .tabcontent h1 {
   font-size: 24px;
   color: var(--accent);
@@ -1115,7 +1076,6 @@ footer { color: #555; font-size: 13px; padding: 30px 20px; }
   padding-bottom: 4px;
 }
 
-/* 하위 섹션 */
 .tabcontent .class-info {
   background-color: #fdfaf7;
   padding: 16px 20px;
@@ -1132,15 +1092,50 @@ footer { color: #555; font-size: 13px; padding: 30px 20px; }
   margin-top: 24px;
 }
 
-.tabcontent .manager-info h2 {
-  font-size: 18px;
-  margin-bottom: 6px;
+.host-wrapper {
+  display: flex;
+  justify-content: flex-start;
 }
 
-/* 더보기 버튼 중앙 고정 */
+.host-box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.host-box img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.host-box div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.host-box h5 {
+  margin: 0 0 6px 0;
+  font-size: 16px;
+}
+
+.host-box h5 a {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.host-box p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+
 .tabcontent button {
   position: static;
-  bottom: 20px; /* 콘텐츠 아래쪽 여유 */
   left: 50%;
   transform: translateX(-50%);
   width: 120px;
@@ -1158,6 +1153,7 @@ footer { color: #555; font-size: 13px; padding: 30px 20px; }
   background-color: #e3a45c;
   transform: translateX(-50%) translateY(-2px);
 }
+
 
 /*클래스신청*/
 #reservation {

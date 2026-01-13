@@ -1,18 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="class-detail">
-  <!-- 왼쪽: 이미지 + 제목 + 정보 -->
   <div class="class-left">
     <img class="main-image"
          src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=900&q=80">
-    <h1 class="class-title">[수유]🎤보컬 MBTI x 퍼스널컬러 진단 | 나만의 음악 성향 찾기</h1>
+    <h1 class="class-name" id="classTitle">
+        [수유]🎤보컬 MBTI x 퍼스널컬러 진단 | 나만의 음악 성향 찾기</h1>
   </div>
 
-  <!-- 오른쪽: 예약 박스 -->
   <aside class="class-right">
     <div class="schedule-card">
       <h6 class="small-title">클래스 일정</h6>
-      <input type="date" class="date-input" value="2025-10-02">
+      <input type="date" class="date-input" id="selectedDate">
 
       <div class="tag success2">🔈 최소 1일 전 예약이 필요한 클래스 입니다</div>
 
@@ -23,12 +22,7 @@
       </div>
 
       <div class="price">30,000 원 / 1인</div>
-
-             <!-- 클래스 신청하기 버튼 -->
-        <button class="btn-apply"
-        onclick="location.href='{{ url_for('reservations.reservation_form') }}?class_name={{ class_title|urlencode }}'">
-  클래스 신청하기
-        </button>
+        <button class="btn-apply" onclick="goToReservation()">클래스 신청하기</button>
 
       <div class="small-actions">
         <button class="btn-ghost">위시리스트</button>
@@ -99,19 +93,18 @@
 </div>
 
   <div class="tabcontent">
-  <h1>호스트 소개</h1>
-  <div class="class-info">
-    <div style="display: flex; align-items: center; justify-content: space-between;">
-      <div style="width: 400px; display: flex; align-items: center; gap: 40px;">
-        <img src="https://firebasestorage.googleapis.com/v0/b/mochaclass-intro-web-4e0c0.appspot.com/o/FCMImages%2Fd5yTWHgkZ6Gt44DN_68772c4a9a33da2f4e95cf7f_400x400?alt=media"
-             style="width: 100px; height: 100px; border-radius: 50%;">
-        <div>
-          <h5 style="margin:0;"><a href="#">채널 바로가기</a></h5>
-          <p style="margin:0;">모카클래스 매니저</p>
-        </div>
+    <h1>호스트 소개</h1>
 
+    <div class="class-info">
+      <div class="host-wrapper">
+        <div class="host-box">
+          <img src="https://firebasestorage.googleapis.com/v0/b/mochaclass-intro-web-4e0c0.appspot.com/o/FCMImages%2Fd5yTWHgkZ6Gt44DN_68772c4a9a33da2f4e95cf7f_400x400?alt=media">
+          <div>
+            <h5><a href="#">채널 바로가기</a></h5>
+            <p>모카클래스 매니저</p>
+          </div>
+        </div>
       </div>
-    </div>
     </div>
 <h1>1. 곰씨네는 이런 사람입니다 🎤✨</h1>
 <p>
@@ -163,6 +156,7 @@
           <a href="/qna">▶️Q&A 질문하러 가기</a>
       </div>
   </div>
+</section>
 
 <script>
 const tabMenu = document.querySelectorAll('.tab_menu li');
@@ -170,16 +164,35 @@ const tabContent = document.querySelectorAll('.tabcontent');
 
 tabMenu.forEach((tm, i) => {
   tm.addEventListener('click', () => {
-    // 모든 탭 비활성화
     tabMenu.forEach(item => item.classList.remove('active'));
     tabContent.forEach(tc => tc.classList.remove('active'));
-
-    // 클릭한 탭 활성화
     tm.classList.add('active');
     tabContent[i].classList.add('active');
   });
 });
 
+function getToday() {
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+}
+
+const dateInput = document.getElementById("selectedDate");
+const today = getToday();
+dateInput.value = today;
+dateInput.min = today;
+
+function goToReservation() {
+  const selectedDate = dateInput.value;
+  if (!selectedDate) {
+    alert("날짜를 선택해주세요.");
+    return;
+  }
+  const classTitle = document.getElementById("classTitle").innerText.trim();
+  location.href = `/reservations/new?date=${selectedDate}&class_name=${encodeURIComponent(classTitle)}`;
+}
 </script>
 
 {% endblock %}

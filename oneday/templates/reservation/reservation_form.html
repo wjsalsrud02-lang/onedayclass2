@@ -9,13 +9,15 @@
   <div class="mb-3">
     <label for="class_name" class="form-label">클래스명</label>
     <input type="text" class="form-control" id="class_name" name="class_name"
-           value="{{ reservation.class_name if reservation else '' }}" required>
+       value="{{ reservation.class_name if reservation else class_name }}"
+       readonly required>
   </div>
 
   <div class="mb-3">
     <label for="reserved_date" class="form-label">날짜</label>
     <input type="date" class="form-control" id="reserved_date" name="reserved_date"
-           value="{{ reservation.reserved_date.strftime('%Y-%m-%d') if reservation else '' }}" required>
+       value="{{ selected_date or reservation.reserved_date }}"
+       required>
   </div>
 
 <div class="mb-3">
