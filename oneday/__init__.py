@@ -48,4 +48,7 @@ def create_app():
     from .filter import format_datetime
     app.jinja_env.filters['datetime'] = format_datetime
 
+    with app.app_context():
+        db.create_all()
+        
     return app
