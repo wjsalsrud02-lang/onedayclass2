@@ -45,8 +45,10 @@ def create_app():
     app.register_blueprint(reservation_views.bp)
     app.register_blueprint(sub_views.bp)
 
-    # 필터
     from .filter import format_datetime
     app.jinja_env.filters['datetime'] = format_datetime
 
+    with app.app_context():
+        db.create_all()
+        
     return app
