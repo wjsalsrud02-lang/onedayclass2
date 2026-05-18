@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- 질문 등록 -->
+<div class="container my-4 qna-form-container">
+    <div class="qna-form-card">
+        <h5 class="qna-form-title">✏️ 질문등록</h5>
+        <form method="post" enctype="multipart/form-data" class="my-3">
+            {{ form.csrf_token }}
+
+            <!-- 오류 표시 -->
+            {% if form.errors %}
+            <div class="alert alert-danger" role="alert">
+                {% for field, errors in form.errors.items() %}
+                <strong>{{ form[field].label }}</strong>
+                <ul>
+                    {% for error in errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- 제목 -->
+            <div class="mb-3">
+                <label for="subject">제목</label>
+                <input type="text" name="subject" id="subject"
+                       class="form-control"
+                       value="{{ form.subject.data or '' }}">
+            </div>
+
+            <!-- 내용 -->
+            <div class="mb-3">
+                <label for="content">내용</label>
+                <textarea type="text" name="content" id="content"
+                          class="form-control" rows="5">{{ form.content.data or '' }}</textarea>
+            </div>
+
+            <!-- 이미지 첨부 -->
+            <div class="mb-3">
+                <label for="image">이미지 첨부</label>
+                <input type="file" name="image" id="image" class="form-control">
+            </div>
+
+            <!-- 버튼 -->
+            <button type="submit" class="btn btn-orange">저장하기</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

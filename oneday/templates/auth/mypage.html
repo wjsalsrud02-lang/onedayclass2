@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h3 class="my-4">마이페이지</h3>
+    <p> <span class="me-3">{{ current_user.username }}님 환영합니다!</span></p>
+    <a href="{{ url_for('main.home') }}" class="btn btn-secondary mt-3">홈으로 돌아가기</a>
+</div>
+{% endblock %}
